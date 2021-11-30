@@ -1,6 +1,7 @@
-import React from "react";
+import { memo } from "react";
 
-export const InCompleteTodos = (props) => {
+export const InCompleteTodos = memo((props) => {
+  console.log("InCompleteTodosをレンダリング");
   const {todos, onClickComplete, onClickDelete} = props;
   return (
     <div className="incomplete-area">
@@ -20,5 +21,4 @@ export const InCompleteTodos = (props) => {
       </ul>
     </div>
   );
-
-}
+});

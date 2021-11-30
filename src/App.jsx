@@ -1,12 +1,14 @@
-import { render } from "@testing-library/react";
 import React, { useState } from "react";
-import {InputTodo} from "./components/InputTodo"
-import {InCompleteTodos} from "./components/InCompleteTodos"
+import { InputTodo } from "./components/InputTodo";
+import { InCompleteTodos } from "./components/InCompleteTodos";
 import { CompleteTodos } from "./components/CompleteTodos";
-import "./styles.css"
+import { ChildArea } from "./components/ChildArea";
+import "./styles.css";
 
 // ReactDom.render(<App />, document.getElementById("root"));
 export const App = () => {
+  console.log("Appをレンダリング");
+
   const [incompleteTodos, setIncompleteTodos] = useState(["aaaa", "bbbb"])
   const [completeTodos, setCompleteTodos] = useState(["cccc", "dddd"])
   const [todoText, setTodoText] = useState("")
@@ -41,6 +43,10 @@ export const App = () => {
     setCompleteTodos(newCompleteTodos);
     setIncompleteTodos(newIncompleteTodos);
   }
+  const [open, setOpen] = useState(false);
+  const onClickOpen = () => {
+    setOpen(!open);
+  }
 
   return (
     <>
@@ -50,6 +56,8 @@ export const App = () => {
       )}
       <InCompleteTodos todos={incompleteTodos} onClickComplete={onClickComplete} onClickDelete={onClickDelete}/>
       <CompleteTodos todos={completeTodos} onClick={onClickBack}/>
+      <button onClick={onClickOpen}>表示</button>
+      <ChildArea open={open} />
     </>
   );
 }

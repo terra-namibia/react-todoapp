@@ -1,7 +1,7 @@
-import { render } from "@testing-library/react";
-import React from "react";
+import { memo } from "react";
 
-export const CompleteTodos = (props) => {
+export const CompleteTodos = memo((props) => {
+  console.log("CompleteTodosをレンダリング");
   const {todos, onClick} = props;
   return (
     <div className="complete-area">
@@ -20,4 +20,4 @@ export const CompleteTodos = (props) => {
       </ul>
     </div>
   );
-}
+});
